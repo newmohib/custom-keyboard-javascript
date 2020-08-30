@@ -37,7 +37,7 @@
             let strButtonView = 10;
             let toLength = fromLength + strButtonView;
             let total = arr.length;
-            let isShow = true;
+            let isShow = false;
 
             const createButton = () => {
                 var buttonText = '';
