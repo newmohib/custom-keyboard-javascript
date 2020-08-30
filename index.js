@@ -28,16 +28,16 @@
                 { type: "str", value: "mohib15" },
                 { type: "str", value: "mohib16" },
                 { type: "str", value: "mohib17" },
-                { type: "str", value: "mohib18" },
+                { type: "str", value: "mohib18" }
 
             ];
 
             let initialFromLength = 10;
             let fromLength = initialFromLength;
-            let strButtonView = 5;
+            let strButtonView = 10;
             let toLength = fromLength + strButtonView;
             let total = arr.length;
-            let isShow = false;
+            let isShow = true;
 
             const createButton = () => {
                 var buttonText = '';
@@ -59,10 +59,18 @@
                 let subscript = { 0: '\u2080', 1: '\u2081', 2: '\u2082', 3: '\u2083', 4: '\u2084', 5: '\u2085', 6: '\u2086', 7: '\u2087', 8: '\u2088', 9: '\u2089' }
                 let isNum = Number(value);
                 console.log(isNum);
-                if (isNum || isNum == 0) {
+                if (value == 'space') {
+                    document.getElementById("calculatorValue").value = `${existValue} `;
+                }
+                else if (isNum || isNum == 0) {
                     document.getElementById("calculatorValue").value = `${existValue}${superscript[isNum]}`;
                 } else {
-                    document.getElementById("calculatorValue").value = `${existValue} ${value}`;
+                    if (existValue == '') {
+                        document.getElementById("calculatorValue").value = `${existValue}${value}`;
+                    } else {
+                        document.getElementById("calculatorValue").value = `${existValue}, ${value}`;
+                    }
+                    
                 }
             }
             const previous = () => {

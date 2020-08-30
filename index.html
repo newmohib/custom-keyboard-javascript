@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="keyboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 mt-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10  px-0">
+                            <input onfocus="isKeyboardShow()" type="text" class="input form-control" id="calculatorValue"
+                                aria-describedby="emailHelp">
+                        </div>
+                        <div class="col-2 px-0 ">
+                            <button id="showHide" onclick="isKeyboardShow()" type="button" class="btn btn-light brn-sm btn-block">show</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="keyboard" class="shadow-sm bg-white  rounded">
+                    <div class="container">
+                        <div class="row my-1 pt-2" id="allNum"></div>
+                        <div class="row mb-1 pl-1 mr-n3" id="allStr"></div>
+                        <div class="row mb-1 px-0 pb-2 align-content-center">
+                            <div class="col-4 col-md-2 pl-2">
+                                <button onclick="previous()" type="button"
+                                    class="btn btn-outline-secondary btn-sm">Previous</button>
+                            </div>
+                            <div class="col-4 col-md-8 pr-1 pl-0">
+                                <button onclick="getData('space')" type="button"
+                                        class="btn btn-light btn-sm btn-block">Space</button>
+                            </div>
+                            <div class="col-4 col-md-2 pl-0 pr-0">
+                                <button onclick="next()" type="button"
+                                        class="btn btn-outline-secondary btn-sm px-4">Next</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="index.js"></script>
+</body>
+</html>
