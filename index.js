@@ -1,34 +1,34 @@
 
 let arr = [
-    { type: "num", value: 0 },
-    { type: "num", value: 1 },
-    { type: "num", value: 2 },
-    { type: "num", value: 3 },
-    { type: "num", value: 4 },
-    { type: "num", value: 5 },
-    { type: "num", value: 6 },
-    { type: "num", value: 7 },
-    { type: "num", value: 8 },
-    { type: "num", value: 9 },
-    { type: "str", value: "mohib1" },
-    { type: "str", value: "rony" },
-    { type: "str", value: "mohib2" },
-    { type: "str", value: "mohib3" },
-    { type: "str", value: "mohib4" },
-    { type: "str", value: "mohib5" },
-    { type: "str", value: "mohib6" },
-    { type: "str", value: "mohib7" },
-    { type: "str", value: "mohib8" },
-    { type: "str", value: "mohib9" },
-    { type: "str", value: "mohib10" },
-    { type: "str", value: "mohib11" },
-    { type: "str", value: "mohib12" },
-    { type: "str", value: "mohib13" },
-    { type: "str", value: "mohib14" },
-    { type: "str", value: "mohib15" },
-    { type: "str", value: "mohib16" },
-    { type: "str", value: "mohib17" },
-    { type: "str", value: "mohib18" }
+    { type: "num", value: 0 ,backColor:"#FF6347"},
+    { type: "num", value: 1 ,backColor:"#FF6347"},
+    { type: "num", value: 2 ,backColor:"#FF6347"},
+    { type: "num", value: 3 ,backColor:"#FF6347"},
+    { type: "num", value: 4 ,backColor:"#FF6347"},
+    { type: "num", value: 5 ,backColor:"#FF6347"},
+    { type: "num", value: 6 ,backColor:"#FF6347"},
+    { type: "num", value: 7 ,backColor:"#FF6347"},
+    { type: "num", value: 8 ,backColor:"#FF6347"},
+    { type: "num", value: 9 ,backColor:"#FF6347"},
+    { type: "str", value: "mohib1", backColor:"#7FFFD4" },
+    { type: "str", value: "rony",   backColor:"#DEB887"  },
+    { type: "str", value: "mohib2" ,backColor:"#F5F5DC" },
+    { type: "str", value: "mohib3" ,backColor:"#FFE4C4" },
+    { type: "str", value: "mohib4" ,backColor:"#ADD8E6" },
+    { type: "str", value: "mohib5" ,backColor:"#8A2BE2" },
+    { type: "str", value: "mohib6" ,backColor:"#A52A2A" },
+    { type: "str", value: "mohib7" ,backColor:"#5F9EA0" },
+    { type: "str", value: "mohib8" ,backColor:"#DEB887" },
+    { type: "str", value: "mohib9" ,backColor:"#D2691E" },
+    { type: "str", value: "mohib10",backColor:"#FF7F50"  },
+    { type: "str", value: "mohib11",backColor:"#7FFFD4"  },
+    { type: "str", value: "mohib12",backColor:"#6495ED"  },
+    { type: "str", value: "mohib13",backColor:"#FFF8DC"  },
+    { type: "str", value: "mohib14",backColor:"#DC143C"  },
+    { type: "str", value: "mohib15",backColor:"#808000"  },
+    { type: "str", value: "mohib16",backColor:"#7FFFD4"  },
+    { type: "str", value: "mohib17",backColor:"#008B8B"  },
+    { type: "str", value: "mohib18",backColor:"#B8860B"  }
 
 ];
 
@@ -46,10 +46,10 @@ const createButton = () => {
     var buttonNum = '';
     arr.map((item, index) => {
         if (item.type === "str" && index >= fromLength && index <= toLength) {
-            buttonText += `<div class="col px-0 mb-1"><button onclick="getData('${item.value}')" type="button" class="btn btn-light">${item.value} </button></div>`;
+            buttonText += `<div class="col-3 col-md-2 px-1 mb-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block ">${item.value} </button></div>`;
         }
         else if (item.type === "num") {
-            buttonNum += `<div class="col px-1"><button onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block">${item.value} </button></div>`;
+            buttonNum += `<div class="col px-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block">${item.value} </button></div>`;
         }
     });
     document.getElementById("allNum").innerHTML = buttonNum;
