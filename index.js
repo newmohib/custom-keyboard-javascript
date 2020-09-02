@@ -10,6 +10,8 @@ let arr = [
     { type: "num", value: 7 ,backColor:"#FF6347"},
     { type: "num", value: 8 ,backColor:"#FF6347"},
     { type: "num", value: 9 ,backColor:"#FF6347"},
+    { type: "num", value: '*' ,backColor:"#FF6347"},
+    { type: "num", value: '#' ,backColor:"#FF6347"},
     { type: "str", value: "mohib1", backColor:"#7FFFD4" },
     { type: "str", value: "rony",   backColor:"#DEB887"  },
     { type: "str", value: "mohib2" ,backColor:"#F5F5DC" },
@@ -34,7 +36,7 @@ let arr = [
 
 let initialFromLength = 10;
 let fromLength = initialFromLength;
-let strButtonView = 10;
+let strButtonView = 13;
 let toLength = fromLength + strButtonView;
 let total = arr.length;
 let isShow = false;
@@ -46,10 +48,10 @@ const createButton = () => {
     var buttonNum = '';
     arr.map((item, index) => {
         if (item.type === "str" && index >= fromLength && index <= toLength) {
-            buttonText += `<div class="col-3 col-md-2 px-1 mb-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block ">${item.value} </button></div>`;
+            buttonText += `<div class="col-4 col-md-2 px-1 mb-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block ">${item.value} </button></div>`;
         }
         else if (item.type === "num") {
-            buttonNum += `<div class="col px-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block">${item.value} </button></div>`;
+            buttonNum += `<div class="col col-md px-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block">${item.value} </button></div>`;
         }
     });
     document.getElementById("allNum").innerHTML = buttonNum;
@@ -74,6 +76,10 @@ const getData = (value) => {
         }
 
     }
+
+    let totalLength = `${existValue}${value}`.length;
+    selectionStart = totalLength
+    selectionEnd = totalLength
     document.getElementById("calculatorValue").focus();
 }
 const previous = () => {
@@ -111,6 +117,7 @@ isKeyboardShow()
 
 const backSpace = () => {
     var removeText = '';
+    let existValue = document.getElementById("calculatorValue").value;
     if ((selectionStart >= 0 ) && selectionStart === selectionEnd) {
         var valueArr = existValue.split('');
         console.log("valueArr",valueArr);
