@@ -36,51 +36,55 @@ let arr = [
 
 let initialFromLength = 10;
 let fromLength = initialFromLength;
-let strButtonView = 13;
+let strButtonView = 19;
 let toLength = fromLength + strButtonView;
 let total = arr.length;
 let isShow = false;
 let selectionStart = 0;
 let selectionEnd = 0;
+let createElement = document.getElementById("calculatorValue");
 
 const createButton = () => {
     var buttonText = '';
     var buttonNum = '';
     arr.map((item, index) => {
         if (item.type === "str" && index >= fromLength && index <= toLength) {
-            buttonText += `<div class="col-4 col-md-2 px-1 mb-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block ">${item.value} </button></div>`;
+            buttonText += `<div class="col-4 col-md-2 pl-0 pr-1 mb-1"><button  onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block ">${item.value} </button></div>`;
         }
         else if (item.type === "num") {
-            buttonNum += `<div class="col col-md px-1"><button style="background-color: ${item.backColor}; color: black;" onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block">${item.value} </button></div>`;
+            buttonNum += `<div class="col-2 col-md pl-0 pr-1 mb-1"><button  onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block">${item.value} </button></div>`;
         }
     });
     document.getElementById("allNum").innerHTML = buttonNum;
     document.getElementById("allStr").innerHTML = buttonText;
 };
 const getData = (value) => {
-    let existValue = document.getElementById("calculatorValue").value;
+    let existValue = createElement.value;
+    let totalLength = 0 ;
     let superscript = { 0: '\u2070', 1: '\u00B9', 2: '\u00B2', 3: '\u00B3', 4: '\u2074', 5: '\u2075', 6: '\u2076', 7: '\u2077', 8: '\u2078', 9: '\u2079' }
     let subscript = { 0: '\u2080', 1: '\u2081', 2: '\u2082', 3: '\u2083', 4: '\u2084', 5: '\u2085', 6: '\u2086', 7: '\u2087', 8: '\u2088', 9: '\u2089' }
     let isNum = Number(value);
     console.log(isNum);
     if (value == 'space') {
-        document.getElementById("calculatorValue").value = `${existValue} `;
+        createElement.value = `${existValue} `;
     }
     else if (isNum || isNum == 0) {
-        document.getElementById("calculatorValue").value = `${existValue}${superscript[isNum]}`;
+        createElement.value = `${existValue}${superscript[isNum]}`;
     } else {
         if (existValue == '') {
-            document.getElementById("calculatorValue").value = `${existValue}${value}`;
+            createElement.value = `${existValue}${value}`;
         } else {
-            document.getElementById("calculatorValue").value = `${existValue}, ${value}`;
+            createElement.value = `${existValue}, ${value}`;
         }
-
     }
-
-    let totalLength = `${existValue}${value}`.length;
+    if (existValue == '') {
+        totalLength = value.length;
+    } else {
+        totalLength = `${existValue}, ${value}`.length;
+    }
     selectionStart = totalLength
     selectionEnd = totalLength
-    document.getElementById("calculatorValue").focus();
+    createElement.focus();
 }
 const previous = () => {
     if (toLength - strButtonView > initialFromLength) {
@@ -90,7 +94,7 @@ const previous = () => {
         fromLength = initialFromLength;
     }
     createButton();
-    document.getElementById("calculatorValue").focus();
+    createElement.focus();
 };
 const next = () => {
     if (fromLength + strButtonView < total) {
@@ -98,7 +102,7 @@ const next = () => {
         toLength = fromLength + strButtonView;
     }
     createButton();
-    document.getElementById("calculatorValue").focus();
+    createElement.focus();
 }
 createButton();
 const isKeyboardShow = () => {
@@ -109,15 +113,15 @@ const isKeyboardShow = () => {
     } else {
         document.getElementById("keyboard").style.display = 'none';
         isShow = !isShow;
-        document.getElementById("showHide").innerHTML = 'show'
+        document.getElementById("showHide").innerHTML = 'show';
     }
-    document.getElementById("calculatorValue").focus();
+    createElement.focus();
 }
 isKeyboardShow()
 
 const backSpace = () => {
     var removeText = '';
-    let existValue = document.getElementById("calculatorValue").value;
+    let existValue = createElement.value;
     if ((selectionStart >= 0 ) && selectionStart === selectionEnd) {
         var valueArr = existValue.split('');
         console.log("valueArr",valueArr);
@@ -137,19 +141,20 @@ const backSpace = () => {
         removeText = valueArr.join('');
         selectionEnd = selectionStart;
     }
-    console.log("selectionStart", selectionStart, "selectionEnd", selectionEnd, "removeText", removeText);
-    document.getElementById("calculatorValue").value = removeText;
-    document.getElementById("calculatorValue").focus();
+    console.log("selectionStart", selectionStart, "selectionEnd", selectionEnd, "Remaining Text", removeText);
+    createElement.value = removeText;
+    createElement.focus();
+    createElement.selectionStart = createElement.selectionEnd = selectionStart;
 }
 
-var selectStartEnd = document.getElementById('calculatorValue');
-selectStartEnd.addEventListener("click", () => {
-    selectionStart = selectStartEnd.selectionStart;
-    selectionEnd = selectStartEnd.selectionEnd;
+createElement.addEventListener("click", () => {
+    selectionStart = createElement.selectionStart;
+    selectionEnd = createElement.selectionEnd;
     console.log("selectionStart", selectionStart, "selectionEnd", selectionEnd);
 
 });
 
 const reset=()=>{
-    document.getElementById("calculatorValue").value = "";
+    createElement.value = "";
+    createElement.focus();
 }
