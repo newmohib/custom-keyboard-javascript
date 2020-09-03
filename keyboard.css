@@ -4,3 +4,11 @@ body{
 #keyboard{
     background-color: #ececec;
 }
+
+.button_custom_br{
+    background-color: #8fc9eb;
+    color: black;
+}
+.keyboard_height{
+   min-height: 250px;
+}
