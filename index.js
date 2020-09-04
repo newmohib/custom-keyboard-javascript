@@ -121,7 +121,9 @@ const getData = (value) => {
     selectionEnd = totalLength
     //createElement.readOnly = true;
     createElement.focus();
-    createElement.blur();
+    setTimeout(() =>{
+        createElement.blur();
+    }, 200);
    // createElement.readOnly = false;
    // createElement.selectionStart = createElement.selectionEnd = selectionStart;
 }
