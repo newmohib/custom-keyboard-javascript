@@ -6,9 +6,14 @@ body{
 }
 
 .button_custom_br{
-    background-color: #8fc9eb;
+    /* background-color: #8fc9eb; */
+    background-color: rgba(102, 173, 206, 0.363);
     color: black;
 }
 .keyboard_height{
    min-height: 250px;
+}
+
+.button_sh{
+    /* box-shadow: inset 0px 20px 0px rgba(128, 193, 223, 0.383); */
 }

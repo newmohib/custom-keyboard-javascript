@@ -89,7 +89,7 @@ const createButton = () => {
             buttonText += `<div class="col col-md pl-0 pr-0 pb-0 mb-0 "><button onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block button_custom_br">${item.value} </button></div>`;
         }
         else if (item.type === "num") {
-            buttonNum += `<div class="col col-md pl-0 pr-0 mb-0 "><button onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block button_custom_br">${item.value} </button></div>`;
+            buttonNum += `<div class="col col-md pl-0 pr-0 mb-0 "><button onclick="getData('${item.value}')" type="button" class="btn btn-light btn-block button_custom_br button_sh">${item.value} </button></div>`;
         }
     });
     document.getElementById("allNum").innerHTML = buttonNum;
@@ -119,8 +119,10 @@ const getData = (value) => {
     }
     selectionStart = totalLength
     selectionEnd = totalLength
+    createElement.readOnly = true;
     createElement.focus();
     createElement.readOnly = false;
+    createElement.selectionStart = createElement.selectionEnd = selectionStart;
 }
 const previous = () => {
     if (toLength - strButtonView > initialFromLength) {
