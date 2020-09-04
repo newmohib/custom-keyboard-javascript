@@ -123,7 +123,7 @@ const getData = (value) => {
     createElement.focus();
     setTimeout(() =>{
         createElement.blur();
-    }, 200);
+    }, 2000);
    // createElement.readOnly = false;
    // createElement.selectionStart = createElement.selectionEnd = selectionStart;
 }
