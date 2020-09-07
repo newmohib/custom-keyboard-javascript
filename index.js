@@ -120,7 +120,6 @@ const getData = (value) => {
     selectionStart = totalLength
     selectionEnd = totalLength
     createElement.focus();
-    createElement.readOnly = false;
 }
 const previous = () => {
     if (toLength - strButtonView > initialFromLength) {
